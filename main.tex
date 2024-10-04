@@ -1,0 +1,263 @@
+\documentclass[a4paper,12pt]{article}
+
+
+\usepackage[T1]{fontenc}    
+\usepackage{graphicx}      
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{amssymb}
+\usepackage{changepage}
+
+
+\newfontfamily\TNR{Times New Roman} 
+\newfontfamily\Arial{Arial}
+
+% Impostazione dei margini della pagina
+\geometry{
+    left=30mm,
+    right=20mm,
+    top=30mm,
+    bottom=30mm
+}
+
+\renewcommand{\contentsname}{Indice}
+
+\begin{document}
+
+% MODIFICARE PER CAMBIARE I MARGINI
+\newgeometry{top=2cm, bottom=1.8cm, left=2cm, right=2cm}
+
+%\fontfamily{pbk}\selectfont
+
+\thispagestyle{empty} 
+
+\begin{center}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=5.44cm]{Sigillo_Centenario_HR[11385].png}
+\end{figure}
+
+
+\hrule
+
+\vspace{1cm}
+
+\LARGE{\textbf{Dipartimento di Fisica}}
+
+\vspace{0.5cm}
+
+\LARGE{\textbf{CORSO DI LAUREA IN FISICA}}
+
+\vspace{0.5cm}
+
+\LARGE{\textbf{TESI DI LAUREA}}
+
+\vspace{.5cm}
+
+\vspace{1.0cm}
+\huge{\textbf{Un Nuovo Aproccio all'Individuazione di Assorbitori Metallici nel Mezzo Intergalattico}}
+
+\vspace{0.3cm}
+
+\begin{adjustwidth}{2cm}{2cm}\begin{center}
+\large{Analisi Spettrale dell'IGM mediante spettri di quasar UVES e Astrocook}
+\end{center}
+\end{adjustwidth}
+
+\end{center}
+
+\vfill
+
+\begin{minipage}[t]{0.43\textwidth}
+\begin{flushleft}
+
+
+\large{\emph{Laureando:}}
+
+\large{\textbf {Simone Viol}} 
+
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushright}
+\large{\emph{Relatore:}}
+
+\large{\textbf {Prof. Guido Cupani}} 
+
+\vspace{.5cm}
+
+\large{\emph{Correlatore:}}
+
+\large{\textbf{Prof. Gabriele Cescutti}}
+
+\end{flushright}
+\end{minipage}
+
+\vspace{2cm}
+
+\begin{center}
+    \emph{\textbf{ANNO ACCADEMICO 2023-2024}}
+\end{center}
+
+\restoregeometry
+
+
+\tableofcontents
+% Proposta di indice:
+% 1. Introduzione
+%    1.1 Il mezzo intergalattico
+%        1.1.1 La Foresta Lyman-alpha
+%        1.1.2 I sistemi metallici
+%    1.2 Modellizzazione delle righe di assorbimento
+%        1.2.1 L'approccio di Astrocook
+% 2. Il metodo del doppietto mobile
+%    2.1 Concetti fondamentali
+%        2.1.1 Correlazione fra modello e dati
+%        2.1.2 Studio dei picchi di correlazione
+%    2.2 Implementazione
+%        2.2.1 Modello a riga singola e a doppietto
+%        2.2.2 Selezione dei candidati
+% 3. Risultati nell'identificazione del CIV
+%    3.1 Validazione su spettri sintetici
+%        3.1.1 Creazione degli spettri sintetici
+%        3.1.2 Completezza e falsi positivi
+%    3.2 Validazione su spettri reali
+%        3.2.1 IL "Deep Spectrum" UVES
+%        3.2.2 Completezza e falsi positivi
+% 4. Conclusioni e prospettive future
+
+\newpage
+
+\section{Introduzione} 
+L'universo osservabile si estende per circa 46 miliardi di anni luce e solo una piccola frazione della materia barionica presente è concentrata in strutture familiari come galassie, nebulose, stelle e pianeti. La maggior parte dei barioni, infatti, risiedono nel vuoto tra le galassie e costituiscono il \textit{mezzo intergalattico} (IGM). Lo studio dell'IGM è cruciale in diversi ambiti dell'astrofisica e della cosmologia, a partire dalla comprensione della distribuzione e  formazione delle galassie, all'analisi delle anisotropie nella radiazione cosmica di fondo, al vincolare i parametri che caratterizzano i modelli descrittivi del nostro universo. 
+
+Per esplorare al meglio le proprietà dell'IGM sono ampiamente impiegati gli spettri di emissione di \textit{quasar}, le cui radiazioni con la loro intesità, attraversano il gas diffuso e consentono di rilevare caratteristiche di assorbimento come la \textit{foresta di Lyman-alpha} e i \textit{sistemi di assorbimento} associati a diversi metalli costituenti l'IGM lungo la linea di vista.
+$\\$
+
+La presente tesi si propone di discutere lo sviluppo e l'applicazione di nuove metodologie per l'analisi del mezzo intergalattico, con particolare focus sull'individuazione di nuovi sistemi metallici a bassa densità di colonna utilizzando spettri di quasar Deep Spectrum UVES ad alta risoluzione e strumenti di analisi avanzati come Astrocook, con lo scopo di ottimizzare la completezza dei dati che consentono lo studio delle proprietà caratterizzanti dell'IGM.
+
+\subsection{Il Mezzo Intergalattico}
+Il mezzo intergalattico (IGM) comprende tutto il materiale diffuso nello spazio vuoto tra le galassie e in quanto tale è caratterizzato da proprietà che variano significativamente in base alla composizione chimica, alla densità e al redshift. Queste proprietà riflettono direttamente l'evoluzione dell'universo e delle strutture cosmiche, offrendo preziose informazioni sulla loro storia e sulla distribuzione della materia.
+
+Come suggerisce la definizione, non è del tutto corretto riferirsi al mezzo intergalattico (IGM) prima della formazione delle galassie stesse. Sebbene la maggior parte della massa che lo compone derivi da elementi prodotti durante la nucleosintesi primordiale, l'IGM si sviluppa effettivamente intorno a un redshift $10<z<20$, con la nascita delle prime galassie all'interno di nebulose con masse dell'ordine di $10^{8}M_{\odot}$ o maggiori. 
+Con lo sviluppo di queste strutture e l'aumento della radiazione emessa dalle stelle al loro interno, la quantità di energia irradiata divenne sufficiente a innescare la ionizzazione dell'idrogeno atomico presente nell'IGM. 
+Questo processo, noto come \textit{reionizzazione},  si è verificato intorno a un redshift di z $\approx$ 6 ed è stato causato dall'interazione dell'idrogeno con fotoni di energia dell'ordine di decine di elettronvolt provenienti dalle stelle di popolazione III e dai primi quasar. 
+
+La reionizzazione, oltre a segnare un cambiamento drastico nella composizione dell'IGM, ha portato anche a un aumento notevole delle temperature di quest'ultimo fino a decine di migliaia di Kelvin con un conseguente livellamento della distribuzione della densità del gas nell'universo a causa dell'espansione termica di quest'ultimo con un effetto diretto sulla formazione di nuove galassie. Infatti, la pressione termica provocata dal surriscaldamento del gas intergalattico contrasta l'attrazione gravitazionale che il gas esercita su altro gas, inducendo un rallentamento dei collassi di materia all'interno di nubi e l'evoluzione di queste in nuove galassie.
+%AGGIUNTA: I e II ionizzazione elio(?)
+
+Nonostante ciò, l'attrazione gravitazionale ha continuato e continua tutt'ora ad agire sulla materia diffusa nell'universo portando inevitabilmente a nuovi collassi e alla formazione di nuove strutture in grado di emettere radiazioni sufficientemente intense da mantenere ionizzato l'idrogeno presente nell'IGM. Tra queste spiccano i quasar, particolari nuclei galattici attivi alimentati da buchi neri super massicci i quali, inghiottendo materia molto rapidamente a causa della loro intensa attrazione gravitazionale, portano quest'ultima a convertire la propria energia in radiazione elettromagnetica emettendo fotoni molto energetici.
+%AGGIUNTA: outflow galattici e arricchimento himico (?)
+
+La radiazione emessa da queste fonti molto intense attraversa anni luce di materia nel mezzo intergalattico prima di giungere a noi, consentendoci dunque di individuare negli spettri rilevati, particolari strutture spettroscopiche come foreste Lyman-$\alpha$ e altre linee di assorbimento ed emmissione associate a elementi chimici presenti lungo la linea di vista. 
+Analizzando spettri di sorgenti a $2<z<5$ è, dunque, possibile ricavare numerose informazioni riguardo all'IGM.
+
+
+
+
+\subsubsection{La Foresta Lyman-$\alpha$}
+La Foresta Lyman-$\alpha$ in spettroscopia si riferisce a una serie di righe di assorbimento che si osservano negli spettri di sorgenti luminose e lontane, come i quasar ed è associata alle transizioni Lyman-$\alpha$ degli elettroni negli atomi di idrogeno neutro. Queste transizioni avvengono quando un elettrone atomico viene eccitato da un fotone con un energia pari a quella necessaria per eccitare l'elettrone dallo stato fondamentale con numero quantico principale $n = 1$ a uno stato con $n = 2$. Questi fotoni assorbiti dall'idrogeno neutro vengono sottratti allo spettro dell'oggetto osservato provocando una riga di assorbimento alla corrispondente lunghezza d'onda. 
+
+Da esperimenti di fisica atomica si ricava che la lunghezza d'onda di un tale fotone è di 121.567nm in un sistema di riferimento solidale. Questa lunghezza d'onda risulta dilatata per effetto dell'espansione cosmica secondo la legge \[\lambda' = \lambda_{\mathrm{Lyman-}\alpha} (1+z)\] dove z identifica il redshift della nube in cui il fotone è stato assorbito. Di conseguenza le righe di assorbimento associate a una transizione Lyman-$\alpha$ risultano distribuite lungo un ampio intervallo di lunghezze d'onda in funzione del redshift della nube in cui l'oggetto è stato eccitato rispetto all'osservatore, generando così una ``foresta" di righe di assorbimento (da cui il nome della struttura spettroscopica). 
+%DOMANDA:idrogeno ionizzato o eccitato?
+
+Tale proprietà consente di ricavare informazioni sulla distribuzione e la densità dell'idrogeno neutro nell'IGM  lungo la linea di vista su scale cosmologiche. Analizzando le caratteristiche di questa struttura a diversi redshift è possibile tracciare l'evoluzione dell'IGM nel tempo, andando a studiare fenomeni fondamentali per la comprensione dell'universo come, ad esempio, la reionizzazione dell'idrogeno neutro.
+
+\subsubsection{I Sistemi Metallici}
+Nonostante l'idrogeno costituisca circa il $75\%$ della massa barionica dell'IGM, al suo interno sono presenti numerosi altri elementi chimici chiamati comunemente ``metalli" in astrofisica (eccezione fatta per l'elio). Questi elementi vengono prodotti esclusivamente nei nuclei di stelle sufficientemente massive da innescare un processo di fusione nucleare al loro interno, la quale può arrivare a produrre tutti i nuclei più leggeri fino al ferro. 
+
+Il mezzo intergalattico viene arricchito di metalli principalmente attraverso l'espulsione di materiale nucleare di stelle al termine del loro ciclo vitale, in particolare mediante supernovae, ovvero esplosioni di nane bianche che superano le $1.4 M\odot$. Infatti nel momento in cui una stella esplode, il materiale costituente il suo nucleo viene espulso e diffuso all'interno dell'IGM, raggiungendo regioni distanti anche decine di migliaia di anni luce dalla stella e provocando la formazione, grazie alle elevate energie delle particelle emesse, di nuovi elementi più pesanti come l'oro, l'argento, l'uranio e il piombo, i quali non vengono generati naturalmente all'interno delle stelle mediante fusione nucleare bensì si formano esclusivamente attraverso processi di cattura neutronica rapida o lenta durante fenomeni molto energetici.
+
+I metalli che arricchiscono l'IGM subiscono, analogamente all'idrogeno, fenomeni di fotoionizzazione interagendo con la radiazione ultravioletta proveniente da sorgenti luminose e sono dunque individuabili all'interno di uno spettro di quasar in modo analogo a quanto discusso per l'idrogeno, eccetto per il fatto che i sistemi metallici risultano essere notevolmente più rari. Per distinguere i vari elementi tra loro si sfruttanole differenti caratteristiche delle transizioni elettroniche associate a ogni elemento. In particolare, a ogni eccitazione di un elettrone atomico da un orbitale iniziale a uno a energia maggiore, corrisponde una particolare energia, quindi una particolare lunghezza d'onda, che un fotone deve possedere per provocare la transizione. Spesso accade che più eccitazioni elettroniche cadano all'interno di un intervallo di lunghezze d'onda coperto dall'emissione dei quasar, consentendo così di osservare più di una riga di assorbimento associata a un singolo elemento all'interno dello spettro.  
+
+Per tutti gli elementi esisono delle transizioni più probabili tra tutte quelle possibili, chiamate \textit{transizioni dominanti}. La loro maggiore probabilità di avvenire dipende dalla struttura elettronica dell'atomo ed è descritta dal coefficiente di assorbimento di Einstein. Dato un fascio di fotoni suffiientemente energetici, transizioni con un coefficiente di assorbimento maggiore tenderanno ad assorbire un maggior numero di fotoni rispetto alle transizioni secondarie, portando alla formazione di righe di assorbimento più profonde in corrispondenza della lunghezza d'onda caratteristica della transizione. Dato che i coefficienti di Einstein risultano specifici per ogni transizione, è possibile discriminare i vari metalli andando a ricercare le righe di assorbimento più probabili conoscendo le profondità attese per tali transizioni a redshift differenti. Infatti, come per l'idrogeno, anche nel caso di righe di assorbimento metalliche la dilatazione cosmica porta a una variazione della lunghezza d'onda associata alle singole transizioni, portando a una diffusione delle righe associate a sistemi metallici lungo tutto lo spettro. 
+
+Tuttavia, il redshift non risulta l'unico parametro coinvolto nella caratterizzazione delle righe di assorbimento, infatti queste possono subire variazioni di intensità, larghezza e forma in funzione di diversi parametri come densità di colonna e velocità, le cui influenze sulle righe di assorbimento sono spiegate nel dettaglio nel capitolo successivo.%sistemare parametri 
+
+
+%DOMANDA: ha senso aggiungere un paragrafo per descrivere le righe di assorbimento e i parametri che la caratterizzano?
+
+
+
+
+%AGGIUNGERE: descrizione dei parametri che caratterizzano i sistemi
+%
+
+\subsection{Modellizzazione delle righe di assorbimento}
+\subsubsection{Le righe di assorbimento}
+Ogni elemento chimico è caratterizzato da una struttura elettronica più o meno complessa in cui gli elettroni sono associati a orbitali definiti da una specifica funzione d'onda caratterizzata da un preciso autovalore dell'energia. I valori di energia che gli elettroni possono assumere all'interno della struttura atomica sono discreti e specifici per ogni stato elettronico. Ciò implica che fornendo la corretta quantità di energia a un elettrone atomico, è possibile eccitare l'elettrone, portandolo a uno stato a energia maggiore, oppure ionizzare l'atomo, liberando l'elettrone. 
+
+Nota la relazione tra la lunghezza d'onda e l'energia di un fotone $ E= \frac{h \cdot c}{\lambda}$, è possibile dunque associare a ogni transizione elettronica in un atomo una particolare lunghezza d'onda che un fotone deve possedere per essere sufficientemente energetico per eccitare l'elettrone atomico. Come evidenziato in precedenza, quando un sistema viene irradiato con un flusso di fotoni il cui spettro comprende le lunghezze d'onda necessarie per indurvi una transizione, i fotoni corrispondenti a quelle lunghezze d'onda non contribuiranno allo spettro finale rilevato sperimentalmente, in quanto verranno assorbiti. Tali lacune in corrispondenza di specifiche lunghezze d'onda sono chiamate \textit{righe di assorbimento} e consentono dunque di individuare i sistemi presenti lungo la linea di vista. 
+
+%Ogni elemento chimico è caratterizzato da una struttura elettronica con livelli energetici discreti, specifici per ciascun elettrone. Quando un elettrone atomico assorbe una quantità esatta di energia, può essere eccitato a un livello superiore o, in caso di energia sufficiente, si può avere la ionizzazione dell'atomo con la liberazione dell'elettrone.
+
+%Poiché l'energia di un fotone è legata alla sua lunghezza d'onda dalla relazione  $ E= \frac{h \cdot c}{\lambda}$, a ogni transizione elettronica è possibile associare una specifica lunghezza d'onda. Quando la radiazione elettromagnetica che attraversa un sistema contiene fotoni con le lunghezze d'onda necessarie per indurre una transizione, questi fotoni vengono assorbiti, creando lacune nello spettro osservato.
+%Tali lacune, chiamate \textit{righe di assorbimento}, sono caratterizzate da una riduzione del flusso a specifiche lunghezze d'onda e permettono di identificare la composizione e le proprietà dei sistemi presenti lungo la linea di vista. 
+
+\subsubsection{I parametri caratterizzanti}
+Come accennato in precedenza la forma e la profondità delle righe di assorbimento non dipendono solo dalle caratteristihe chimiche del sistema ma anche da proprietà macroscopiche del gas costituente il sistema stesso. Infatti una riga di assorbimento ideale assumerebbe l'aspetto di una delta di Dirac all'interno dello spettro, poiché tutti i fotoni assorbiti dal sistema per una particolare transizione corrispondono a un'unica lunghezza d'onda. Tuttavia quello che si osserva all'interno degli spettri reali è un generale allargamento delle righe, le quali tendono ad assumere un profilo più complesso dal punto di vista matematico. Questo allargamento è causato da una dispersione delle lunghezze d'onda attorno al valore centrale dovuta a diversi fenomeni fisici che devono essere considerati nella modellizzazione delle righe e che forniscono informazioni cruciali sulle proprietà fisiche del sistema.
+
+Un primo fenomeno di allargamento, noto come allargamento ``naturale", è legato al principio di indeterminazione di Heisenberg: $\Delta E \cdot \Delta t \geq \frac{\hbar}{2}$. Infatti, lo stato eccitato di un atomo o ione ha un tempo di vita finito, che introduce un'incertezza nell'energia esatta della transizione. Poiché ogni riga spettrale rappresenta una transizione tra due livelli energetici, questa incertezza provoca una larghezza finita della riga. Sebbene l’allargamento naturale non sia il contributo dominante nella maggior parte dei contesti astrofisici, rappresenta comunque un aspetto fondamentale nella modellizzazione.
+
+Un secondo effetto di allargamento, spesso più significativo, è legato al moto delle particelle lungo la linea di vista, descritto dall'effetto Doppler. Se un sistema è in movimento, la lunghezza d'onda osservata sarà traslata verso il rosso o verso il blu, a seconda che il moto sia rispettivamente in allontanamento o avvicinamento. Oltre all'espansione dell'universo, che contribuisce allo spostamento delle lunghezze d'onda verso il rosso, bisogna tenere conto dei moti locali delle particelle, come il movimento macroscopico della nube di gas e i moti termici delle particelle stesse. Quest'ultimo effetto, noto come allargamento Doppler termico, produce una distribuzione delle velocità delle particelle secondo una distribuzione gaussiana, riflettendo la temperatura del gas.
+
+Combinando questi due fenomeni, si genera un profilo spettrale che non può essere rappresentato in modo accurato né da una semplice funzione gaussiana, che descrive l'allargamento Doppler termico, né da una funzione lorentziana, che rappresenta l'allargamento naturale. Per modellare correttamente le righe di assorbimento, si introduce il profilo di Voigt, che è la convoluzione di una funzione gaussiana e una lorentziana. Questo profilo permette di integrare entrambi gli effetti, fornendo una descrizione più realistica della forma complessiva delle righe spettrali osservate.
+
+Il profilo di Voigt è caratterizzato da tre parametri fondamentali. Innanzitutto il \textit{parametro di broadening Doppler} $b$, rappresenta l'allargamento della riga dovuto alla velocità termica e ai moti turbolenti del gas e dunque fornisce importanti informazioni sulla temperatura del gas e alla dispersione delle velocità delle particelle. In secondo luogo, il profilo di Voigt dipende parametricamente dal \textit{redshift} $z$, il quale, come già accennato, indica lo spostamento della riga di assorbimento rispetto alla sua lunghezza d'onda di riposo, fornendo informazioni sulla distanza e sul movimento relativo del sistema rispetto all'osservatore. Infine, si ha una dipendenza dalla densità di colonna del sistema $N$, che esprime la quantità di materia assorbente lungo la linea di vista. Questo determina l'intensità della riga di assorbimento e fornisce informazioni sulla composizione del gas.
+
+La modellizzazione delle righe di assorbimento attraverso il profilo di Voigt consente di estrarre una quantità significativa di informazioni fisiche sul gas. Tuttavia, data la complessità del profilo, il fitting delle righe richiede l’utilizzo di tecniche avanzate di minimizzazione e ottimizzazione dei parametri. Con lo scopo di fornire uno strumento che adempia a tali compiti è stato sviluppato Astrocook, un programma che consente di eseguire un'analisi su grandi set di dati spettrali in modo efficace.
+
+
+\subsubsection{L'approccio di Astrocook}
+Astrocook è un ambiente software sviluppato per l'analisi spettrale, con particolare attenzione ai quasar e ai sistemi di assorbimento associati. La sua struttura modulare consente agli utenti di progettare flussi di lavoro specifici, evitando di fare affidamento su procedure predefinite e rigide. Questo approccio si rivela particolarmente utile per l’analisi di spettri complessi, dove è necessaria una flessibilità che permetta di adattare le tecniche di analisi alle diverse necessità scientifiche. Astrocook, infatti, fornisce un insieme di strumenti combinabili e personalizzabili che permettono di gestire in modo efficace problematiche legate allo studio di sistemi di assorbimento, elemento centrale di molte osservazioni spettroscopiche di quasar.
+
+Uno degli aspetti centrali dell'analisi spettrale è la combinazione di diverse esposizioni di uno stesso oggetto, nota come coaddizione degli spettri. Astrocook permette di eseguire questa operazione separando la fase di combinazione dal successivo rigridamento delle lunghezze d’onda. Questa separazione consente di ridurre le correlazioni tra i bin adiacenti che potrebbero introdurre errori nell'analisi, garantendo al contempo la possibilità di regolare il range e il passo di rigridamento in base alle esigenze specifiche del dataset. Questo livello di flessibilità è fondamentale quando si lavora con grandi quantità di dati, come accade nelle survey spettroscopiche, dove ogni dettaglio può influire sull'interpretazione dei risultati.
+
+Un altro aspetto fondamentale nell'analisi di quasar è la stima del continuo, ovvero la ricostruzione dello spettro di emissione del quasar prima che venga modificato dai sistemi di assorbimento lungo la linea di vista. La presenza della foresta di $Lyman-\alpha$, complica questa operazione, soprattutto nelle regioni spettrali blu rispetto alla riga di emissione $Lyman-\alpha$. Astrocook affronta questa sfida mediante l'uso di algoritmi che rilevano automaticamente i minimi locali nel flusso spettrale per identificare le righe di assorbimento. Una volta individuate queste righe, il software le maschera e distribuisce nodi lungo le regioni non affette da assorbimento significativo, interpolando successivamente il continuo. L'utente ha la possibilità di regolare parametri come la soglia di rilevamento delle righe e il livello di smoothing, offrendo un controllo preciso sul processo di stima.
+
+La stima del continuo è strettamente legata alla successiva modellizzazione dei sistemi di assorbimento, un aspetto centrale per l'interpretazione dei dati osservativi. Astrocook utilizza il \textit{profilo di Voigt} per modellare le righe di assorbimento, combinando una componente gaussiana, che rappresenta l’effetto Doppler, con una lorentziana, che tiene conto dell’allargamento naturale delle righe. Ogni sistema di assorbimento è caratterizzato dai parametri chiave discussi precedentemente, come il redshift $z$, la densità di colonna $N$ e il parametro di broadening Doppler $b$, i quali vengono ottimizzati attraverso la minimizzazione del $\chi^2$, confrontando il profilo teorico con i dati osservativi. Questo approccio consente di adattare il modello ai dati reali, gestendo anche casi di sovrapposizione tra più sistemi di assorbimento, come quelli che si osservano frequentemente nella foresta di $Lyman-\alpha$ o nei doppietti di metalli pesanti come il CIV e il SiIV.
+
+La modellizzazione dei sistemi di assorbimento è ulteriormente facilitata dall’interfaccia grafica interattiva di Astrocook, che consente agli utenti di manipolare in modo dinamico i parametri del modello. Attraverso l'interfaccia, è possibile visualizzare i residui del fit in tempo reale, aggiungere o rimuovere sistemi di assorbimento e modificare i parametri di input per migliorare progressivamente il modello. Questa interazione continua permette di ottenere un modello più accurato dei sistemi di assorbimento, garantendo una maggiore precisione nell'analisi finale. Inoltre, l’interfaccia offre strumenti per bloccare determinati parametri durante il processo di fitting o per collegare i parametri di diversi sistemi, in modo da preservare la coerenza fisica dei modelli.
+
+Oltre alla gestione interattiva di singoli spettri, Astrocook è in grado di automatizzare flussi di lavoro complessi su grandi set di dati. Una volta sviluppato un flusso di lavoro su uno spettro campione, l'intero processo può essere registrato e replicato su altri spettri, permettendo di applicare le stesse procedure di analisi su larga scala. Questo garantisce non solo la riproducibilità dell'analisi, ma anche un'elevata efficienza nell'elaborazione di grandi dataset, come quelli generati dalle moderne survey spettroscopiche. La capacità di scalare i flussi di lavoro senza compromettere la precisione dell'analisi rende Astrocook uno strumento particolarmente utile per l'elaborazione di vasti archivi di dati spettrali.
+
+Tuttavia, nonostante la sua flessibilità e l'efficacia nel modellare sistemi di assorbimento complessi, Astrocook presenta alcune limitazioni nella rilevazione di sistemi a bassa densità di colonna. In particolare, nelle situazioni in cui il segnale degli assorbitori metallici si avvicina al livello del rumore, diventa difficile per il software distinguere correttamente le righe di assorbimento. Questo fenomeno comporta un'elevata incertezza nell'identificazione di tali sistemi, portando a una significativa riduzione della completezza dei dati nelle survey con densità di colonna più basse.$\\$
+
+Per ovviare a queste difficoltà, si è reso necessario lo sviluppo di un nuovo approccio, più adatto a gestire l'incertezza legata ai segnali deboli e in grado di migliorare l'identificazione dei sistemi metallici. Nei capitoli successivi verrà descritto nel dettaglio questo nuovo metodo, concepito per ottimizzare il rilevamento e la modellizzazione dei sistemi a bassa densità di colonna, migliorando così la capacità di studio dell'IGM nelle sue componenti meno esplorate
+
+
+\section{Il metodo del doppietto mobile}
+
+\subsection{Concetti fondamentali}
+
+\subsubsection{Correlazione fra modello e dati}
+
+\subsubsection{Studio dei picchi di correlazione}
+
+\subsection{Implementazione}
+
+\subsubsection{Modello a riga singola e a doppietto}
+
+\subsubsection{Selezione dei candidati}
+
+\section{Risultati nell'identificazione del CIV}
+
+\subsection{Validazione su spettri sintetici}
+
+\subsubsection{Creazione degli spettri sintetici}
+
+\subsubsection{Completezza e falsi positivi}
+
+\subsection{Validazione su spettri reali}
+
+\subsubsection{IL "Deep Spectrum" UVES}
+
+\subsubsection{Completezza e falsi positivi}
+
+\section{Conclusioni e prospettive future}
+
+
+
+\end{document}
+
